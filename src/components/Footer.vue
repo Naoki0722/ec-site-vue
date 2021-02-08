@@ -1,5 +1,5 @@
 <template>
-  <footer class="lg:flex justify-between items-end bg-footer-blue py-4 font-serif text-yellow-900">
+  <footer class="lg:flex justify-between items-center bg-footer-blue py-4 font-serif text-yellow-900">
   <!-- <footer class="bg-footer-blue py-4 w-screen"> -->
     <div class="mb-6 lg:mb-0 ml-6">
       <h1 class="text-2xl">One Pre</h1>
