@@ -49,7 +49,7 @@ export default {
     StripeCheckout
   },
   data() {
-    this.publishableKey = process.env.VUE_APP_STRIPE_PUBLISHABLE_KEY_STAGING;
+    this.publishableKey = `${process.env.VUE_APP_STRIPE_PUBLISHABLE_KEY_STAGING}`;
     return {
       title:"Carts",
       cartsItem: "",
