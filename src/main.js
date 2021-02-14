@@ -27,6 +27,7 @@ const firebaseConfig = {
   storageBucket: "tokuda-ec-site.appspot.com",
   messagingSenderId: "1078845768793",
   appId: "1:1078845768793:web:ff0da032f021c8e15ddd48"
+
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
