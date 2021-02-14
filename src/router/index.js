@@ -37,7 +37,7 @@ const routes = [
     path: "/mypage",
     name: "Mypage",
     component: Mypage,
-    // meta: { requiresAuth: true },
+    meta: { requiresAuth: true },
   },
   {
     path: "/likes",
@@ -48,7 +48,6 @@ const routes = [
     path: "/carts",
     name: "Carts",
     component: Carts,
-    // meta: { requiresAuth: true },
   },
   {
     path: "/pthanks",
