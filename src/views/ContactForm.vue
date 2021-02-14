@@ -58,7 +58,7 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
+    async onSubmit() {
       const params = new URLSearchParams();
       params.append('form-name', 'contact');
       params.append('name', this.name)
