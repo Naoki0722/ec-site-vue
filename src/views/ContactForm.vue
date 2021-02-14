@@ -70,8 +70,7 @@ export default {
         .post('/',params)
         .then(()=>{
           alert('送信しました');
-          this.$router.push('/cthanks');
-          // this.$router.push({name: "ContactThanks"})
+          this.$router.push({name: "ContactThanks"})
         })
         .catch(() =>{
           this.$router.push('/cthanks');
