@@ -6,7 +6,7 @@
     
 
     <div class="text-center my-6 w-11/12 md:w-full mx-auto">
-      <form name="contact" class="text-left inline-block border p-4 md:p-11 shadow-md" >
+      <form name="contact" @submit.prevent="onSubmit" class="text-left inline-block border p-4 md:p-11 shadow-md" >
         <div class="pb-6">
           <label for="name" class="block w-56 float-left">名前</label>
           <input type="text" id="name" name="name" class="border rounded border-gray-300 px-2 py-1 font-sans focus:outline-none" v-model="name" placeholder="山田太郎">
@@ -24,7 +24,7 @@
           <textarea  id="message" name="message" class="border rounded border-gray-300 px-2 py-1 w-full h-36 mb-6 focus:outline-none" v-model="message" placeholder="ここにお問い合わせ内容を入力ください。"></textarea>
         </div>
         <div class="text-center">
-          <button class="w-24 mr-2 tracking-wider text-center border hover:bg-orange rounded-full hover:text-white px-0 py-2 transition duration-300 ease-in-out bg-transparent text-gray-800 border-orange focus:outline-none" @click="onSubmit"><font-awesome-icon class="mr-1 text-yellow-900" :icon="['fas', 'check']" />送信</button>
+          <button class="w-24 mr-2 tracking-wider text-center border hover:bg-orange rounded-full hover:text-white px-0 py-2 transition duration-300 ease-in-out bg-transparent text-gray-800 border-orange focus:outline-none" type="submit"><font-awesome-icon class="mr-1 text-yellow-900" :icon="['fas', 'check']" />送信</button>
         </div>
       </form>
     </div>
