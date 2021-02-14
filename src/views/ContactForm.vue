@@ -6,7 +6,7 @@
     
 
     <div class="text-center my-6 w-11/12 md:w-full mx-auto">
-      <form class="text-left inline-block border p-4 md:p-11 shadow-md" >
+      <form name="contact" class="text-left inline-block border p-4 md:p-11 shadow-md" >
         <div class="pb-6">
           <label for="name" class="block w-56 float-left">名前</label>
           <input type="text" id="name" name="name" class="border rounded border-gray-300 px-2 py-1 font-sans focus:outline-none" v-model="name" placeholder="山田太郎">
@@ -58,7 +58,7 @@ export default {
     }
   },
   methods: {
-    async onSubmit() {
+    onSubmit() {
       const params = new URLSearchParams();
       params.append('form-name', 'contact');
       params.append('name', this.name)
@@ -72,6 +72,9 @@ export default {
           alert('送信しました');
           this.$router.push('/cthanks');
           // this.$router.push({name: "ContactThanks"})
+        })
+        .catch(() =>{
+          this.$router.push('/cthanks');
         })
 
     }
