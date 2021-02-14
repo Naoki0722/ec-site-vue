@@ -66,14 +66,14 @@ export default {
       params.append('tell', this.tell)
       params.append('message', this.message)
 
-      axios
+      await axios
         .post('/',params)
         .then(()=>{
           alert('送信しました');
           this.$router.push({name: "ContactThanks"})
         })
         .catch(() =>{
-          this.$router.push('/cthanks');
+          this.$router.push({name: "ContactThanks"})
         })
 
     }
