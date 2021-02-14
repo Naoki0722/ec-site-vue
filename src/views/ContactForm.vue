@@ -71,6 +71,7 @@ export default {
         .then(()=>{
           alert('送信しました');
           this.$router.push('/cthanks');
+          // this.$router.push({name: "ContactThanks"})
         })
 
     }
