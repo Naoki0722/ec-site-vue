@@ -10,6 +10,12 @@
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="text" name="tell" />
+        <textarea name="message"></textarea>
+      </form>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->

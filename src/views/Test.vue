@@ -8,13 +8,25 @@
         </div>
       </div> -->
 
-      <!-- vue-slickを使用 -->
-      <slick ref="slick" :options="slickForOptions" class="slider-for" >
+
+        <!-- <slick ref="slick" :options="slickForOptions" class="slider-for" >
+            <div v-for="(product, index) in products.image_url" :key="index"><img :src="product.image_url"></div>
+        </slick>
+        <slick ref="slick" :options="slickNavOptions" class="slider-nav" >
           <div v-for="(product, index) in products.image_url" :key="index"><img :src="product.image_url"></div>
-      </slick>
-      <slick ref="slick2" :options="slickNavOptions" class="slider-nav">
-        <div v-for="(product, index) in products.image_url" :key="index" class="mx-3 bg-gray-400"><img :src="product.image_url" class="opacity-60"></div>
-      </slick>
+        </slick> -->
+
+
+        <slick ref="slick" :options="slickForOptions" class="slider-for" >
+            <div><img src="https://static.takeda.tv/uploads/2017/05/test_large.jpg" ></div>
+            <div><img src="https://static.takeda.tv/uploads/2017/05/test_large.jpg" ></div>
+            <div><img src="https://static.takeda.tv/uploads/2017/05/test_large.jpg" ></div>
+        </slick>
+        <slick ref="slick" :options="slickNavOptions" class="slider-nav" >
+            <div><img src="https://static.takeda.tv/uploads/2017/05/test_large.jpg" ></div>
+            <div><img src="https://static.takeda.tv/uploads/2017/05/test_large.jpg" ></div>
+            <div><img src="https://static.takeda.tv/uploads/2017/05/test_large.jpg" ></div>
+        </slick>
     </div>
     <div class="md:w-1/3">
       <p class="tracking-wider text-lg">商品名</p>
@@ -45,7 +57,6 @@ export default {
   data() {
     return {
       products: "",
-      show: true,
       auth: this.$store.state.status,
       img: "",
       slickForOptions: {
@@ -56,9 +67,10 @@ export default {
           asNavFor: '.slider-nav',
       },
       slickNavOptions: {
-          slidesToShow: 0,
+          slidesToShow: 3,
           slidesToScroll: 1,
           asNavFor: '.slider-for',
+          dots: true,
           centerMode: true,
           focusOnSelect: true
       },
@@ -73,21 +85,10 @@ export default {
         axios.get(`http://localhost:8000/api/categories/${this.category_id}/products/${this.id}`)
             .then((response) => {
               this.products = response.data.data[0];
+              console.log(this.products.image_url.length)
+              // this.slickNavOptions.slidesToShow =this.products.image_url.length
               this.img = response.data.data[0].image_url[0].image_url
-              this.slickNavOptions.slidesToShow =this.products.image_url.length
-              this.reInit();
             })
-    },
-    reInit() {
-      this.$refs.slick.destroy()
-      this.$nextTick(() => {
-          this.$refs.slick.create()
-      })
-      this.$refs.slick2.destroy()
-      this.$nextTick(() => {
-          this.$refs.slick2.create()
-      })
-
     },
     async addCart() {
       await
@@ -137,7 +138,7 @@ export default {
   watch: {
     $route () {
       this.getItem();
-    },
+    }
   },
 }
 </script>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Test from '../views/Test.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Mypage from '../views/Mypage.vue'
@@ -12,79 +13,91 @@ import ContactFormConfirm from '../views/ContactFormConfirm.vue'
 import Category from '../views/Category.vue'
 import Product from '../views/Product.vue'
 import Carts from '../views/Carts.vue'
+import firebase from 'firebase';
+import "firebase/auth";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/test",
+    name: "Test",
+    component: Test,
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/register',
-    name: 'Register',
-    component: Register
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
   {
-    path: '/mypage',
-    name: 'Mypage',
-    component: Mypage
+    path: "/register",
+    name: "Register",
+    component: Register,
   },
   {
-    path: '/likes',
-    name: 'Likes',
-    component: Likes
+    path: "/mypage",
+    name: "Mypage",
+    component: Mypage,
+    // meta: { requiresAuth: true },
   },
   {
-    path: '/carts',
-    name: 'Carts',
-    component: Carts
+    path: "/likes",
+    name: "Likes",
+    component: Likes,
   },
   {
-    path: '/pthanks',
-    name: 'PurchaseThanks',
-    component: PurchaseThanks
+    path: "/carts",
+    name: "Carts",
+    component: Carts,
+    // meta: { requiresAuth: true },
   },
   {
-    path: '/cthanks',
-    name: 'ContactThanks',
-    component: ContactThanks
+    path: "/pthanks",
+    name: "PurchaseThanks",
+    component: PurchaseThanks,
   },
   {
-    path: '/contact',
-    name: 'ContactForm',
-    component: ContactForm
+    path: "/cthanks",
+    name: "ContactThanks",
+    component: ContactThanks,
   },
   {
-    path: '/contact_confirm',
-    name: 'ContactFormConfirm',
-    component: ContactFormConfirm
+    path: "/contact",
+    name: "ContactForm",
+    component: ContactForm,
   },
   {
-    path: '/category',
-    name: 'Category',
-    component: Category
+    path: "/contact_confirm",
+    name: "ContactFormConfirm",
+    component: ContactFormConfirm,
   },
   {
-    path: '/product',
-    name: 'Product',
-    component: Product
+    path: "/category/:id",
+    name: "Category",
+    component: Category,
+    props: true,
   },
   {
-    path: '/about',
-    name: 'About',
+    path: "/category/:category_id/product/:id",
+    name: "Product",
+    component: Product,
+    props: true,
+  },
+  {
+    path: "/about",
+    name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+];
 
 const router = new VueRouter({
   mode: 'history',
@@ -98,5 +111,14 @@ const router = new VueRouter({
     }
   }
 })
+
+router.beforeEach(async (to, from, next) => {
+  const requiresAuth = to.matched.some(recode => recode.meta.requiresAuth);
+  if (requiresAuth && !(await firebase.getCurrentUser())) {
+    next({ path: "/login", query: { redirect: to.fullPath } });
+  } else {
+    next();
+  }
+});
 
 export default router

@@ -1,4 +1,5 @@
 <template>
+  <!-- netlifyでは使えない -->
   <div class="min-h-screen font-serif relative pb-80 lg:pb-20 box-border">
     <Header></Header>
     <ContentTitle class="my-4 ml-9" :sendTitle="title"></ContentTitle>

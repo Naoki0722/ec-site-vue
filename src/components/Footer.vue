@@ -7,7 +7,7 @@
     </div>
     <nav class="list-none lg:flex">
       <li class="mb-4 lg:mb-0 mx-6 lg:mx-8 cursor-pointer" @click="$router.push('/')">Home</li>
-      <li class="mb-4 lg:mb-0 mx-6 lg:mx-8 cursor-pointer" @click="$router.push('/category')">Product</li>
+      <li class="mb-4 lg:mb-0 mx-6 lg:mx-8 cursor-pointer" @click="$router.push('/category/1')">Product</li>
       <li class="mb-4 lg:mb-0 mx-6 lg:mx-8 cursor-pointer" @click="$router.push('/contact')">Contact</li>
       <li class="mb-4 lg:mb-0 mx-6 lg:mx-8 cursor-pointer" >Pribacy Policy</li>
       <li class="mb-6 lg:mb-0 mx-6 lg:mx-8 mr-10 cursor-pointer">特定商取引法に基づく表示</li>

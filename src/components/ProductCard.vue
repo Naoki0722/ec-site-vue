@@ -1,15 +1,15 @@
 <template>
   <div class="product-card mt-5 mb-28">
     <div class="flex-wrap flex justify-center">
-      <div class="my-3 md:my-o w-3/4 md:w-2/3 lg:w-4/12 parenthesis relative">
+      <div class="my-3 md:my-o w-3/4 md:w-3/5 lg:w-3/12 parenthesis relative cursor-pointer hover:bg-gray-400 transition duration-1000 ease-out" @click="$router.push('/category/1')">
         <img src="../assets/product_1.jpg" alt="ピアス">
         <p class="absolute top-1/2 left-1/2 transform -translate-x-2/4 text-white text-xl font-serif tracking-widest">ピアス</p>
       </div>
-      <div class="my-3 md:my-o w-3/4 md:w-2/3 lg:w-4/12 parenthesis relative">
+      <div class="my-3 md:my-o w-3/4 md:w-3/5 lg:w-3/12 parenthesis relative cursor-pointer hover:bg-gray-400 transition duration-1000 ease-out" @click="$router.push('/category/2')">
         <img src="../assets/product_1.jpg" alt="ピアス">
         <p class="absolute top-1/2 left-1/2 transform -translate-x-2/4 text-white text-xl font-serif tracking-widest">リング</p>
       </div>
-      <div class="my-3 md:my-o w-3/4 md:w-2/3 lg:w-4/12 parenthesis relative">
+      <div class="my-3 md:my-o w-3/4 md:w-3/5 lg:w-3/12 parenthesis relative cursor-pointer hover:bg-gray-400 transition duration-1000 ease-out" @click="$router.push('/category/3')">
         <img src="../assets/product_1.jpg" alt="ピアス">
         <p class="absolute top-1/2 left-1/2 transform -translate-x-2/4 text-white text-xl font-serif tracking-widest">修理</p>
       </div>

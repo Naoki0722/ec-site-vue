@@ -3,24 +3,23 @@
     <Header></Header>
     <button class="mt-4 ml-9" @click="$router.back()">＜戻る</button>
     <ContentTitle class="my-4 ml-9" :sendTitle="title"></ContentTitle>
-    <ProductDetail></ProductDetail>
+    <ProductDetail :category_id="category_id" :id="id"></ProductDetail>
+    <!-- <ProductDetail></ProductDetail> -->
     <div class="flex justify-center relative mb-6">
       <h4>同じカテゴリーの商品</h4>
       <div class="hidden md:block">
-        <p class="absolute right-0 pr-11 text-yellow-900 cursor-pointer" @click="$router.push('/category')">その他の商品も見る</p>
+        <p class="absolute right-0 pr-11 text-yellow-900 cursor-pointer" @click="sendPage()">その他の商品も見る</p>
         <div class="other">
           <span class="test"></span>
         </div>
       </div>
     </div>
     <div class="flex justify-around flex-wrap mb-11">
-      <ProductsCard></ProductsCard>
-      <ProductsCard></ProductsCard>
-      <ProductsCard></ProductsCard>
-      <ProductsCard></ProductsCard>
+      <ProductsCard v-for="item in items" :key="item.id" :item="item" :category_id="category_id">></ProductsCard>
     </div>
     <div class="block md:hidden relative mb-11">
-      <p class="text-center text-yellow-900 cursor-pointer" @click="$router.push('/category')">その他の商品も見る</p>
+      <!-- <p class="text-center text-yellow-900 cursor-pointer" @click="$router.push({name: 'Category', params: {id:category_id}})">その他の商品も見る</p> -->
+      <p class="text-center text-yellow-900 cursor-pointer" @click="sendPage()">その他の商品も見る</p>
       <div>
         <span class="test-2"></span>
       </div>
@@ -37,7 +36,9 @@ import ContentTitle from '../components/ContentTitle';
 import ProductDetail from '../components/ProductDetail';
 import ProductsCard from '../components/ProductsCard';
 import Footer from '../components/Footer';
+import axios from 'axios';
 export default {
+  props:["category_id","id"],
   components: {
     Header,
     ContentTitle,
@@ -47,9 +48,25 @@ export default {
   },
   data() {
     return {
-      title: "Product"
+      title: "Product",
+      items: ""
     }
   },
+  async created() {
+    let item = [];
+    await
+      axios.get(`http://localhost:8000/api/categories/${this.category_id}/products`)
+           .then((response) => {
+             item.push(response.data.data);
+             this.items = item[0];
+             console.log(this.items[0].image_url);
+           })
+  },
+  methods: {
+    sendPage() {
+      this.$router.push(`/category/${this.category_id}`);
+    }
+  }
 }
 </script>
 

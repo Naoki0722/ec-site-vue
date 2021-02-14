@@ -24,9 +24,6 @@ import BenefitArea from '../components/BenefitArea.vue';
 import Features from '../components/Features.vue';
 import PurchaseFlow from '../components/PurchaseFlow.vue';
 import ProductContact from '../components/ProductContact.vue';
-
-
-
 import ShopInfo from '../components/ShopInfo.vue';
 import Footer from '../components/Footer.vue';
 export default {

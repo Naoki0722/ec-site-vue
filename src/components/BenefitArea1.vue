@@ -5,7 +5,7 @@
       <h2 class="w-full mt-6 lg:mt-0 lg:w-3/5 mb-10 lg:mb-20 text-lg md:text-2xl">日常生活の一部</h2>
       <p class="w-full lg:w-3/5 mb-10">普段からアクセサリーをつけるだけで、気分が上がり、日常を楽しくしてくれるものです。</p>
       <p class="w-full lg:w-3/5">付けるのが面倒だから...と思わず、まずは付けたいアクセサリーを選んでみましょう！</p>
-      <div class="hidden lg:block block-area bg-gray-100 w-full h-full absolute top-1/4 -left-1/3 "></div>
+      <div class="hidden lg:block block-area bg-gray-100 w-full h-5/6 absolute top-1/4 -left-1/3 "></div>
     </div>
   </div>
 </template>

@@ -11,6 +11,7 @@
 import Navigation from '../components/Navigation.vue';
 import Hamburger from '../components/Hamburger.vue';
 export default {
+  props: ["link"],
   components: {
     Navigation,
     Hamburger

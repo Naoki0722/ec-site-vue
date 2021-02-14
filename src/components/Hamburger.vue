@@ -5,20 +5,29 @@
       <span class="line absolute block w-10 h-0.5 bg-yellow-900"></span>
       <span class="line absolute block w-10 h-0.5 bg-yellow-900"></span>
     </div>
-    <div class="lg:hidden side-nav shadow-md block h-4/5 fixed top-0 z-30 bg-footer-blue" :class="{'open':isClass}">
+    <div class="lg:hidden side-nav shadow-md block h-full fixed top-0 z-30 bg-footer-blue" :class="{'open':isClass}">
       <p class="ml-6 mt-4 mb-8 text-2xl">Menu</p>
       <ul>
-        <li @click="$router.push('/')" class="ml-6 my-1">
+        <li @click="$router.push('/')" class="ml-6 my-1 cursor-pointer">
           <p>Home</p>
         </li>
-        <li @click="$router.push('/likes')" class="ml-6 my-2">
+        <li @click="$router.push('/category/1')" class="ml-6 my-2 cursor-pointer">
+          Product
+        </li>
+        <li @click="$router.push('/likes')" class="ml-6 my-2 cursor-pointer">
           Favorite
         </li>
-        <li @click="$router.push('/contact')" class="ml-6 my-2">
+        <li @click="$router.push('/carts')" class="ml-6 my-2 cursor-pointer">
+          Cart
+        </li>
+        <li @click="$router.push('/contact')" class="ml-6 my-2 cursor-pointer">
           Contact
         </li>
-        <li @click="$router.push(`/${getText}`)" class="ml-6 my-2">
-          {{getText}}
+        <li v-show="!auth" @click="$router.push(`/login`)" class="ml-6 my-2 cursor-pointer">
+          Login
+        </li>
+        <li v-show="auth" @click="$router.push(`/mypage`)" class="ml-6 my-2 cursor-pointer">
+          Mypage
         </li>
       </ul>
     </div>
@@ -31,6 +40,7 @@ export default {
   data() {
     return {
       isClass: false,
+      auth: this.$store.state.status
     }
   },
   methods: {
@@ -82,7 +92,7 @@ export default {
 }
 
 .side-nav {
-  width: calc(100% - 150px); 
+  width: calc(50%); 
   right: calc(-100% - 150px); 
   /* box-shadow: 100px 0 rgba(38, 98, 213, 0.3); */
   transition: 0.5s;

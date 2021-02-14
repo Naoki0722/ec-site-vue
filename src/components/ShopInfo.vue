@@ -1,9 +1,9 @@
 <template>
   <div>
     <TopTitle :title="tableTitle"></TopTitle>
-    <table class="mx-4 md:mx-auto mb-24 text-gray-900 font-serif">
+    <table class="text-sm md:text-base mx-4 mx-auto mb-24 text-gray-900 font-serif">
       <tr class="border-b border-gray-400">
-        <th class="text-left pt-6 pr-11 lg:pr-36">
+        <th class="text-left pt-6 pr-6 md:pr-11 lg:pr-36">
           店名
         </th>
         <td class="pt-6">
@@ -11,7 +11,7 @@
         </td>
       </tr>
       <tr class="border-b border-gray-400">
-        <th class="text-left pt-6 pr-11 lg:pr-36">
+        <th class="text-left pt-6 pr-6 md:pr-11 lg:pr-36">
           住所
         </th>
         <td class="pt-6">
@@ -19,7 +19,7 @@
         </td>
       </tr>
       <tr class="border-b border-gray-400">
-        <th class="text-left pt-6 pr-11 lg:pr-36">
+        <th class="text-left pt-6 pr-6 md:pr-11 lg:pr-36">
           電話番号
         </th>
         <td class="pt-6">
@@ -27,7 +27,7 @@
         </td>
       </tr>
       <tr class="border-b border-gray-400">
-        <th class="text-left pt-6 pr-11 lg:pr-36">
+        <th class="text-left pt-6 pr-6 md:pr-11 lg:pr-36">
           営業時間
         </th>
         <td class="pt-6">

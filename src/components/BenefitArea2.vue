@@ -7,7 +7,7 @@
         <p class="mb-10">普段からアクセサリーをつけるだけで、気分が上がり、日常を楽しくしてくれるものです。</p>
         <p>付けるのが面倒だから...と思わず、まずは付けたいアクセサリーを選んでみましょう！</p>
       </div>
-      <div class="block-area hidden lg:block bg-gray-100 w-full h-full absolute top-1/4 left-1/3 -z-10"></div>
+      <div class="block-area hidden lg:block bg-gray-100 w-full h-5/6 absolute top-1/4 left-1/3 -z-10"></div>
     </div>
     <img src="../assets/product_1.jpg" alt="ピアス" class="hidden lg:inline relative z-20 w-4/5 lg:w-2/5 mx-auto">
   </div>

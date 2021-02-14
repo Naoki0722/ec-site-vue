@@ -20,47 +20,49 @@
           </th>
         </tr>
       </thead>
-      <tbody class="text-sm md:text-lg">
-        <tr class="bg-white">
+      <tbody class="text-sm md:text-lg" v-show="auth">
+        <tr class="bg-white" v-for="(cart,index) in cartsData" :key="index">
           <td class="hidden lg:block px-16 py-6 flex flex-row items-center">
             <img
               class="h-8 w-8 object-cover"
-              src="https://randomuser.me/api/portraits/men/30.jpg"
+              :src="cart.images[0].image_url"
               alt=""
             />
           </td>
           <td class="px-6 lg:px-16 py-6 lg:py-2">
-            <p class="text-center">シルバーリング</p>
+            <p class="text-center">{{cart.product_name}}</p>
           </td>
           <td class="hidden md:table-cell px-6 lg:px-16 py-2">
-            <p class="text-center">ピアス</p>
+            <p class="text-center">{{cart.category_name}}</p>
           </td>
           <td class="px-6 lg:px-16 py-2">
-            <p class="text-center">10500</p>
+            <p class="text-center">{{cart.product_price}}</p>
           </td>
           <td class="text-center">
-            <button class="text-xs md:text-sm bg-transparent hover:text-white px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none">削除</button>
+            <button class="text-xs md:text-sm bg-transparent hover:text-white px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none" @click="delCart(cart.product_id)">削除</button>
           </td>
         </tr>
-        <tr class="bg-white">
+      </tbody>
+      <tbody class="text-sm md:text-lg" v-show="!auth">
+        <tr class="bg-white" v-for="(cart,index) in carts" :key="index">
           <td class="hidden lg:block px-16 py-6 flex flex-row items-center">
             <img
               class="h-8 w-8 object-cover"
-              src="https://randomuser.me/api/portraits/men/30.jpg"
+              :src="cart.image_url[0].image_url"
               alt=""
             />
           </td>
-          <td class="px-4 lg:px-16 py-6 lg:py-2">
-            <p class="text-center">シルバーリング</p>
+          <td class="px-6 lg:px-16 py-6 lg:py-2">
+            <p class="text-center">{{cart.product_name}}</p>
           </td>
           <td class="hidden md:table-cell px-6 lg:px-16 py-2">
-            <p class="text-center">ピアス</p>
+            <p class="text-center">{{cart.category_name}}</p>
           </td>
-          <td class="px-4 lg:px-16 py-2">
-            <p class="text-center">10500</p>
+          <td class="px-6 lg:px-16 py-2">
+            <p class="text-center">{{cart.price}}</p>
           </td>
           <td class="text-center">
-            <button class="text-xs md:text-sm bg-transparent hover:text-white px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none">削除</button>
+            <button class="text-xs md:text-sm bg-transparent hover:text-white px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none" @click="delGuestCart(cart.id)">削除</button>
           </td>
         </tr>
       </tbody>
@@ -72,7 +74,7 @@
             小計(円)
           </th>
           <td class="text-right pb-2">
-            20,500
+            {{sumPrice}}
           </td>
         </tr>
         <tr class="border-b">
@@ -80,7 +82,7 @@
             消費税(円)
           </th>
           <td class="text-right">
-            2,000
+            {{taxPrice}}
           </td>
         </tr>
         <tr>
@@ -88,10 +90,79 @@
             合計(円)
           </th>
           <td class="text-right pt-4">
-            22,500
+            {{totalPrice}}
           </td>
         </tr>
       </table>
     </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios'
+export default {
+  props: ["cartsData"],
+  data() {
+    return {
+      auth: this.$store.state.status,
+      carts: ""
+    }
+  },
+  created() {
+    this.getGuestCart()
+  },
+  computed: {
+    sumPrice() {
+      let total = 0
+      if(this.auth) {
+        const length = this.cartsData.length;
+        for(let i =0; i< length; i++) {
+          total += this.cartsData[i].product_price
+        }
+        return total
+      } else {
+        const length = this.carts.length;
+        for(let i =0; i< length; i++) {
+          total += this.carts[i].price
+        }
+        return total
+      }
+    },
+    taxPrice() {
+      return this.sumPrice * 0.08
+    },
+    totalPrice() {
+      return this.sumPrice + this.taxPrice
+    }
+  },
+  methods: {
+    async delCart(product_id) {
+      await
+        axios.delete(`http://localhost:8000/api/carts`,
+        {data: {
+          user_id: this.$store.state.user.id,
+          product_id: product_id
+        }})
+        .then((response) => {
+          console.log(response);
+        })
+        alert('カートから削除しました!');
+        this.$emit('delCart');
+    },
+    getGuestCart() {
+      if(!this.auth) {
+        this.carts = this.$store.state.carts;
+        console.log(this.carts);
+      }
+    },
+    delGuestCart(product_id) {
+      var result = this.carts.filter((item) => { 
+        return (item.id !== product_id);
+      });
+        this.$store.dispatch('delGuestCart',result)
+        this.getGuestCart()
+        console.log(result)
+    }
+  }
+}
+</script>
