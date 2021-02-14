@@ -50,7 +50,11 @@ export default {
   },
   data() {
     return {
-      publishableKey: 'pk_test_51I9UrdGfr486TDLv6kvnsBtlrMuR3U041eg5HmUHUSUjrUa6dgWvM5rCTRzitv3Ox4y4jix1Cb6tqtltLW2sP4mF001nJ3V5oE',
+      // テストキー
+      // publishableKey: 'pk_test_51I9UrdGfr486TDLv6kvnsBtlrMuR3U041eg5HmUHUSUjrUa6dgWvM5rCTRzitv3Ox4y4jix1Cb6tqtltLW2sP4mF001nJ3V5oE',
+      
+      // 本番キー
+      publishableKey: 'pk_live_51I9UrdGfr486TDLv8JAc8U7FLrwCNbU2SO2Dnv4YQPq8C4zSBpiAxKd0QmeQ5W7lWo8EiISFJrQ0FpeKEk81h0OE00ctqwsqko',
       title:"Carts",
       cartsItem: "",
       loading: false,
