@@ -98,7 +98,7 @@ export default {
   methods: {
     async addCart(product_id) {
       await
-        axios.post(`http://localhost:8000/api/carts`, {
+        axios.post(`https://gentle-wildwood-14193.herokuapp.com/api/carts`, {
           user_id: this.$store.state.user.id,
           product_id: product_id
         })
@@ -109,7 +109,7 @@ export default {
     },
     async delLike(product_id) {
       await
-        axios.delete(`http://localhost:8000/api/likes`,
+        axios.delete(`https://gentle-wildwood-14193.herokuapp.com/api/likes`,
         {data: {
           user_id: this.$store.state.user.id,
           product_id: product_id

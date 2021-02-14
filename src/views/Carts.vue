@@ -80,7 +80,7 @@ export default {
       for(const cart of this.$store.state.carts) {
         await
           axios
-            .post('http://localhost:8000/api/carts', {
+            .post('https://gentle-wildwood-14193.herokuapp.com/api/carts', {
               user_id: this.$store.state.user.id,
               product_id: cart.id,
             })
@@ -96,7 +96,7 @@ export default {
     async getCarts() {
       let total = 0;
       await
-        axios.get(`http://localhost:8000/api/carts?user_id=${this.$store.state.user.id}`)
+        axios.get(`https://gentle-wildwood-14193.herokuapp.com/api/carts?user_id=${this.$store.state.user.id}`)
             .then((res) => {
               console.log(res.data.data);
               this.cartsItem = res.data.data;
@@ -111,7 +111,7 @@ export default {
       if(this.auth) {
         await 
           axios
-            .post('http://localhost:8000/api/stripes', {
+            .post('https://gentle-wildwood-14193.herokuapp.com/api/stripes', {
               title: "今回購入商品",
               image: "https://storage.googleapis.com/ttrinity/_img/product/23/23218/1870578/design_img_f_1870578_s.png",
               price: this.totalPrice,

@@ -70,7 +70,7 @@ export default {
   methods: {
     async getItem() {
       await
-        axios.get(`http://localhost:8000/api/categories/${this.category_id}/products/${this.id}`)
+        axios.get(`https://gentle-wildwood-14193.herokuapp.com/api/categories/${this.category_id}/products/${this.id}`)
             .then((response) => {
               this.products = response.data.data[0];
               this.img = response.data.data[0].image_url[0].image_url
@@ -92,7 +92,7 @@ export default {
     async addCart() {
       await
         axios
-          .post('http://localhost:8000/api/carts', {
+          .post('https://gentle-wildwood-14193.herokuapp.com/api/carts', {
             user_id: this.$store.state.user.id,
             product_id: this.id
           })
@@ -105,7 +105,7 @@ export default {
     async addLike() {
       await
         axios
-          .post('http://localhost:8000/api/likes', {
+          .post('https://gentle-wildwood-14193.herokuapp.com/api/likes', {
             user_id: this.$store.state.user.id,
             product_id: this.id
           })

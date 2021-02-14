@@ -48,7 +48,7 @@ export default {
     },
     async register() {
       await 
-        axios.post('http://localhost:8000/api/users', {
+        axios.post('https://gentle-wildwood-14193.herokuapp.com/api/users', {
               name: this.name,
               email: this.email,
               tell_number: this.tell,

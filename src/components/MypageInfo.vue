@@ -73,7 +73,7 @@ export default {
       if(!this.editFlag) {
         await
           axios
-            .put(`http://localhost:8000/api/users/${this.user.id}`,{
+            .put(`https://gentle-wildwood-14193.herokuapp.com/api/users/${this.user.id}`,{
               name: this.user.name,
               email: this.user.email,
               tell_number: this.user.tell_number

@@ -79,14 +79,14 @@ export default new Vuex.Store({
   actions: {
     async login({ commit }, { email, password }) {
       const responseLogin = await axios.post(
-        "http://localhost:8000/api/login",
+        "https://gentle-wildwood-14193.herokuapp.com/api/login",
         {
           email: email,
           password: password,
         }
       );
       const responseUser = await axios.get(
-        `http://localhost:8000/api/users/${responseLogin.data.data.id}`
+        `https://gentle-wildwood-14193.herokuapp.com/api/users/${responseLogin.data.data.id}`
       );
       commit("userLogin", responseUser.data.data);
     },

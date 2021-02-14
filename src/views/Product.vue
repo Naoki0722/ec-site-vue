@@ -55,7 +55,7 @@ export default {
   async created() {
     let item = [];
     await
-      axios.get(`http://localhost:8000/api/categories/${this.category_id}/products`)
+      axios.get(`https://gentle-wildwood-14193.herokuapp.com/api/categories/${this.category_id}/products`)
            .then((response) => {
              item.push(response.data.data);
              this.items = item[0];

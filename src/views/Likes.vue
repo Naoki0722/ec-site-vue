@@ -70,7 +70,7 @@ export default {
       for(const like of this.$store.state.likes) {
         await
           axios
-            .post('http://localhost:8000/api/likes', {
+            .post('https://gentle-wildwood-14193.herokuapp.com/api/likes', {
               user_id: this.$store.state.user.id,
               product_id: like.id,
             })
@@ -85,7 +85,7 @@ export default {
     },
     async getLike() {
       await
-        axios.get(`http://localhost:8000/api/likes?user_id=${this.$store.state.user.id}`)
+        axios.get(`https://gentle-wildwood-14193.herokuapp.com/api/likes?user_id=${this.$store.state.user.id}`)
             .then((res) => {
               console.log(res.data.data);
               this.items = res.data.data;

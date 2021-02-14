@@ -138,7 +138,7 @@ export default {
   methods: {
     async delCart(product_id) {
       await
-        axios.delete(`http://localhost:8000/api/carts`,
+        axios.delete(`https://gentle-wildwood-14193.herokuapp.com/api/carts`,
         {data: {
           user_id: this.$store.state.user.id,
           product_id: product_id
