@@ -60,7 +60,7 @@ export default {
   methods: {
     async submit() {
       const params = new URLSearchParams();
-      params.append('form-name', 'contact');
+      params.append('form-name', 'contact2');
       params.append('name', this.name)
       params.append('email', this.email)
       params.append('tell', this.tell)
