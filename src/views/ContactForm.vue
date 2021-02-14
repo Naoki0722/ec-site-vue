@@ -24,7 +24,7 @@
           <textarea  id="message" name="message" class="border rounded border-gray-300 px-2 py-1 w-full h-36 mb-6 focus:outline-none" v-model="message" placeholder="ここにお問い合わせ内容を入力ください。"></textarea>
         </div>
         <div class="text-center">
-          <button class="w-24 mr-2 tracking-wider text-center border hover:bg-orange rounded-full hover:text-white px-0 py-2 transition duration-300 ease-in-out bg-transparent text-gray-800 border-orange focus:outline-none" @click="onSubmit"><font-awesome-icon class="mr-1 text-yellow-900" :icon="['fas', 'check']" />送信</button>
+          <button class="w-24 mr-2 tracking-wider text-center border hover:bg-orange rounded-full hover:text-white px-0 py-2 transition duration-300 ease-in-out bg-transparent text-gray-800 border-orange focus:outline-none" type="submit" @click="onSubmit"><font-awesome-icon class="mr-1 text-yellow-900" :icon="['fas', 'check']" />送信</button>
         </div>
       </form>
     </div>
