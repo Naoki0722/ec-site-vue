@@ -42,12 +42,6 @@ export default {
     ShopInfo,
     Footer
   },
-  created() {
-    // this.$gtag.pageview({
-    //   page_path: '/',
-    //   page_title: "ホーム画面"
-    // })
-  },
   data() {
     return {
       firstTitle: "オシャレがあなたを輝かせる",
