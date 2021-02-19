@@ -6,6 +6,8 @@ import "./assets/css/tailwind.css";
 import VueScrollTo from "vue-scrollto";
 import firebase from 'firebase';
 import "firebase/auth";
+import VueGtag from "vue-gtag";
+
 
 
 
@@ -45,6 +47,16 @@ firebase.getCurrentUser = () => {
 
 
 Vue.config.productionTip = false
+
+// プラグインを追加
+Vue.use(VueGtag, {
+  config: {
+    id: process.env.VUE_APP_GA_ID,
+    params: {
+      send_page_view: false
+    }
+  }
+});
 
 new Vue({
   router,

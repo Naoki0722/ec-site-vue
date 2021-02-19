@@ -45,7 +45,6 @@ export default new Vuex.Store({
         price: price,
         image_url: image_url,
       });
-      console.log("ここまできてる");
     },
     addLike(
       state,
@@ -59,7 +58,6 @@ export default new Vuex.Store({
         price: price,
         image_url: image_url,
       });
-      console.log("ここまできてる");
     },
     delCart(state, product) {
       state.carts.length = 0;

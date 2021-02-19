@@ -23,10 +23,10 @@
       <p class="leading-6 font-sans py-4">{{products.description}}</p>
       <p class="text-right text-xl">¥ {{products.price}}</p>
       <div class="md:flex justify-around pt-6 text-center">
-        <button v-show="auth" class="mx-3 md:mx-0 my-6 md:my-0 text-center border rounded-2xl hover:bg-orange hover:text-white py-1 px-4 transition duration-300 ease-in-out bg-transparent text-yellow-900 border-orange" @click="addCart">カートに入れる</button>
-        <button v-show="!auth" class="mx-3 md:mx-0 my-6 md:my-0 text-center border rounded-2xl hover:bg-orange hover:text-white py-1 px-4 transition duration-300 ease-in-out bg-transparent text-yellow-900 border-orange" @click="addGuestCart">カートに入れる</button>
-        <button v-show="!auth" class="text-center border rounded-2xl hover:bg-orange hover:text-white py-1 px-4 transition duration-300 ease-in-out bg-transparent text-yellow-900 border-orange" @click="addGuestLike">お気に入り登録する</button>
-        <button v-show="auth" class="text-center border rounded-2xl hover:bg-orange hover:text-white py-1 px-4 transition duration-300 ease-in-out bg-transparent text-yellow-900 border-orange" @click="addLike">お気に入り登録する</button>
+        <button v-show="auth" class="mx-3 md:mx-3 lg:mx-0 my-6 md:my-0 text-center border-2 rounded-2xl hover:bg-orange hover:text-white py-3 px-4 transition duration-300 ease-in-out bg-transparent text-yellow-900 border-orange" @click="addCart">カートに入れる</button>
+        <button v-show="!auth" class="mx-3 md:mx-3 lg:mx-0 my-6 md:my-0 text-center border-2 rounded-2xl hover:bg-orange hover:text-white py-3 px-4 transition duration-300 ease-in-out bg-transparent text-yellow-900 border-orange" @click="addCart">カートに入れる</button>
+        <button v-show="auth" class="text-center rounded-2xl hover:bg-orange hover:text-white py-3 px-4 transition duration-300 ease-in-out bg-transparent text-yellow-900 border-orange border-2" @click="addLike">お気に入り登録する</button>
+        <button v-show="!auth" class="text-center rounded-2xl hover:bg-orange hover:text-white py-3 px-4 transition duration-300 ease-in-out bg-transparent text-yellow-900 border-orange border-2" @click="addLike">お気に入り登録する</button>
       </div>
     </div>
   </div>

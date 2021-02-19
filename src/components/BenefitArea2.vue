@@ -1,9 +1,11 @@
 <template>
-  <div class="flex flex-wrap lg:flex-nowrap lg:justify-center mb-24 lg:mb-60 lg:mt-60">
-    <img src="../assets/product_1.jpg" alt="ピアス" class="relative z-20 w-4/5 lg:w-2/5 mx-auto lg:hidden">
+  <div class="flex flex-wrap lg:flex-nowrap lg:justify-center mb-24 lg:mb-60 lg:mt-60 h-auto items-start">
+    <img src="../assets/product_1.jpg" alt="ピアス" class="relative z-20 w-4/5 lg:w-2/5 mx-auto lg:hidden items-start">
     <div class="relative z-10 w-4/5 p-6 lg:p-0 lg:w-2/5 mx-auto lg:mx-0 bg-gray-100 lg:bg-transparent">
       <div class="w-full lg:w-3/5 contents-area font-serif text-yellow-900">
         <h2 class="mb-20 text-lg md:text-2xl">日常生活の一部</h2>
+        <p class="mb-10">普段からアクセサリーをつけるだけで、気分が上がり、日常を楽しくしてくれるものです。</p>
+        <p>付けるのが面倒だから...と思わず、まずは付けたいアクセサリーを選んでみましょう！</p>
         <p class="mb-10">普段からアクセサリーをつけるだけで、気分が上がり、日常を楽しくしてくれるものです。</p>
         <p>付けるのが面倒だから...と思わず、まずは付けたいアクセサリーを選んでみましょう！</p>
       </div>

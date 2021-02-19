@@ -6,8 +6,8 @@
       <input type="text" name="email" id="email" class="border rounded-md block w-full h-8 mb-6 px-2" v-model="email">
       <label for="password" class="tracking-wider text-yellow-900">password</label>
       <input type="password" name="password" id="password" class="border rounded-md block w-full h-8 mb-11 px-2" v-model="password">
-      <input type="checkbox" name="remember" id="remember" class="border rounded-md mb-11 mr-3">
-      <label for="remember" class="tracking-wider text-yellow-900">remember me</label>
+      <!-- <input type="checkbox" name="remember" id="remember" class="border rounded-md mb-11 mr-3">
+      <label for="remember" class="tracking-wider text-yellow-900">remember me</label> -->
     </form>
     <p class="text-orange text-center tracking-wide">forget your password?</p>
     <div class="mt-11 mb-11 text-center">  

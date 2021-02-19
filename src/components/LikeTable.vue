@@ -43,11 +43,12 @@
           <td class="px-4 lg:px-11 py-2">
             <p class="text-center">{{item.product_price}}</p>
           </td>
-          <td class="text-center lg:pl-1">
-            <button class="hidden md:block text-xs mx-2 md:mx-6 lg:mx-8 md:text-sm bg-orange text-white px-2 md:px-4 lg:px-4 py-2 border rounded-full transition duration-300 ease-in-out hover:bg-white hover:border-orange hover:text-black focus:outline-none" @click="addCart(item.product_id)">カートへ</button>
+          <td class="text-center">
+            <button class="hidden md:block text-xs mx-2 md:mx-6 lg:mx-6 md:text-sm bg-orange text-white px-2 md:px-2 py-2 border rounded-full transition duration-300 ease-in-out hover:bg-white hover:border-orange hover:text-black focus:outline-none" @click="addCart(item.product_id)">カートへ</button>
           </td>
           <td class="text-center">
-            <button class="text-xs md:text-sm bg-transparent hover:text-white px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none" @click="delLike(item.product_id)">削除</button>
+            <button class="md:hidden block mt-2 text-xs md:text-sm bg-transparent text-white px-1 py-2 border bg-orange text-white rounded-full transition duration-300 ease-in-out hover:bg-white hover:border-orange hover:text-black hover:border-0 focus:outline-none" @click="addCart(item.product_id)">カートへ</button>
+            <button class="block mt-2 md:mt-0 text-xs md:text-sm bg-transparent hover:text-white px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none" @click="delLike(item.product_id)">削除</button>
           </td>
         </tr>
       </tbody>
@@ -69,11 +70,12 @@
           <td class="px-4 lg:px-11 py-2">
             <p class="text-center">{{like.price}}</p>
           </td>
-          <td class="text-center lg:pl-1">
-            <button class="hidden md:block text-xs mx-2 md:mx-6 lg:mx-8 md:text-sm bg-orange text-white px-2 md:px-4 lg:px-4 py-2 border rounded-full transition duration-300 ease-in-out hover:bg-white hover:border-orange hover:text-black focus:outline-none" @click="addGuestCart(like)">カートへ</button>
+          <td class="text-center">
+            <button class="hidden md:block text-xs mx-2 md:mx-6 lg:mx-6 md:text-sm bg-orange text-white px-2 md:px-2 py-2 border rounded-full transition duration-300 ease-in-out hover:bg-white hover:border-orange hover:text-black focus:outline-none" @click="addGuestCart(like)">カートへ</button>
           </td>
           <td class="text-center">
-            <button class="text-xs md:text-sm bg-transparent hover:text-white px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none" @click="delGuestLike(like.id)">削除</button>
+            <button class="md:hidden block mt-2 text-xs md:text-sm bg-transparent text-white px-1 py-2 border bg-orange text-white rounded-full transition duration-300 ease-in-out hover:bg-white hover:border-orange hover:text-black hover:border-0 focus:outline-none" @click="addGuestCart(like)">カートへ</button>
+            <button class="block mt-2 md:mt-0 text-xs md:text-sm bg-transparent hover:text-white px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none" @click="delGuestLike(like.id)">削除</button>
           </td>
         </tr>
       </tbody>
@@ -123,7 +125,6 @@ export default {
     getGuestLike() {
       if(!this.auth) {
         this.likes = this.$store.state.likes;
-        // console.log(this.likes);
       }
     },
     addGuestCart(item) {

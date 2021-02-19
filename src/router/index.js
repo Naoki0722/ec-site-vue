@@ -12,6 +12,7 @@ import ContactFormConfirm from '../views/ContactFormConfirm.vue'
 import Category from '../views/Category.vue'
 import Product from '../views/Product.vue'
 import Carts from '../views/Carts.vue'
+import Commercial from '../views/Commercial.vue'
 import firebase from 'firebase';
 import "firebase/auth";
 
@@ -79,6 +80,12 @@ const routes = [
     path: "/category/:category_id/product/:id",
     name: "Product",
     component: Product,
+    props: true,
+  },
+  {
+    path: "/commercial",
+    name: "Commercial",
+    component: Commercial,
     props: true,
   },
   {

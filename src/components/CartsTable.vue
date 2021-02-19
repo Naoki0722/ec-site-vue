@@ -39,7 +39,7 @@
             <p class="text-center">{{cart.product_price}}</p>
           </td>
           <td class="text-center">
-            <button class="text-xs md:text-sm bg-transparent hover:text-white px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none" @click="delCart(cart.product_id)">削除</button>
+            <button class="text-xs md:text-sm bg-transparent hover:text-white px-2 md:px-4 py-2 border border-gray-700 rounded-full transition duration-300 ease-in-out hover:bg-white hover:bg-gray-500 hover:border-0 text-black focus:outline-none" @click="delCart(cart.product_id)">削除</button>
           </td>
         </tr>
       </tbody>

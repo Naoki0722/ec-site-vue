@@ -1,6 +1,6 @@
 <template>
-  <div v-scroll-to="'.scroll-point'" class="cursor-pointer scroll font-extralight bg-regal-blue absolute right-20 md:-bottom-11 lg:bottom-14 inline-block h-60 hidden md:block">
-    <p class="text-white py-5 px-3 font-serif font-thin">SCROL</p>
+  <div v-scroll-to="'.scroll-point'" class="cursor-pointer scroll font-extralight bg-regal-blue absolute right-20 md:-bottom-11 lg:bottom-14 inline-block h-60  w-12 hidden md:block">
+    <p class="text-white  py-5 px-3 font-serif font-thin">SCROL</p>
     <span></span>
     <span></span>
   </div>

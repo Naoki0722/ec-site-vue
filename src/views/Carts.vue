@@ -86,8 +86,6 @@ export default {
               product_id: cart.id,
             })
             .then(() => {
-              // alert('カートテーブル入れたよ')
-              // console.log(res);
             })
         this.getCarts()
       }

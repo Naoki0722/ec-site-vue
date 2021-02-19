@@ -9,25 +9,25 @@
       <p class="ml-6 mt-4 mb-8 text-2xl">Menu</p>
       <ul>
         <li @click="$router.push('/')" class="ml-6 my-1 cursor-pointer">
-          <p>Home</p>
+          <p class="text-xl">Home</p>
         </li>
-        <li @click="$router.push('/category/1')" class="ml-6 my-2 cursor-pointer">
-          Product
+        <li @click="$router.push('/category/1')" class="ml-6 my-6 cursor-pointer">
+          <p class="text-xl">Product</p>
         </li>
-        <li @click="$router.push('/likes')" class="ml-6 my-2 cursor-pointer">
-          Favorite
+        <li @click="$router.push('/likes')" class="ml-6 my-6 cursor-pointer">
+          <p class="text-xl">Favorite</p>
         </li>
-        <li @click="$router.push('/carts')" class="ml-6 my-2 cursor-pointer">
-          Cart
+        <li @click="$router.push('/carts')" class="ml-6 my-6 cursor-pointer">
+          <p class="text-xl">Cart</p>
         </li>
-        <li @click="$router.push('/contact')" class="ml-6 my-2 cursor-pointer">
-          Contact
+        <li @click="$router.push('/contact')" class="ml-6 my-6 cursor-pointer">
+          <p class="text-xl">Contact</p>
         </li>
-        <li v-show="!auth" @click="$router.push(`/login`)" class="ml-6 my-2 cursor-pointer">
-          Login
+        <li v-show="!auth" @click="$router.push(`/login`)" class="ml-6 my-6 cursor-pointer">
+          <p class="text-xl">Login</p>
         </li>
-        <li v-show="auth" @click="$router.push(`/mypage`)" class="ml-6 my-2 cursor-pointer">
-          Mypage
+        <li v-show="auth" @click="$router.push(`/mypage`)" class="ml-6 my-6 cursor-pointer">
+          <p class="text-xl">Mypage</p>
         </li>
       </ul>
     </div>
@@ -92,7 +92,7 @@ export default {
 }
 
 .side-nav {
-  width: calc(50%); 
+  width: calc(55%); 
   right: calc(-100% - 150px); 
   /* box-shadow: 100px 0 rgba(38, 98, 213, 0.3); */
   transition: 0.5s;
@@ -102,4 +102,11 @@ export default {
   right: 0;
   /* left: 0; */
 }
+
+@media screen and (min-width: 768px) {
+  .side-nav {
+    width: calc(35%);
+  }
+}
+
 </style>

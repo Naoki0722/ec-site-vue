@@ -75,8 +75,7 @@ export default {
               product_id: like.id,
             })
             .then(() => {
-              // alert('カートテーブル入れたよ')
-              // console.log(res);
+
             })
         this.getLike()
       }

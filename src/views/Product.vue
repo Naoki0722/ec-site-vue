@@ -4,7 +4,6 @@
     <button class="mt-4 ml-9" @click="$router.back()">＜戻る</button>
     <ContentTitle class="my-4 ml-9" :sendTitle="title"></ContentTitle>
     <ProductDetail :category_id="category_id" :id="id"></ProductDetail>
-    <!-- <ProductDetail></ProductDetail> -->
     <div class="flex justify-center relative mb-6">
       <h4>同じカテゴリーの商品</h4>
       <div class="hidden md:block">
@@ -17,9 +16,8 @@
     <div class="flex justify-around flex-wrap mb-11">
       <ProductsCard v-for="item in items" :key="item.id" :item="item" :category_id="category_id">></ProductsCard>
     </div>
-    <div class="block md:hidden relative mb-11">
-      <!-- <p class="text-center text-yellow-900 cursor-pointer" @click="$router.push({name: 'Category', params: {id:category_id}})">その他の商品も見る</p> -->
-      <p class="text-center text-yellow-900 cursor-pointer" @click="sendPage()">その他の商品も見る</p>
+    <div class="block md:hidden relative mb-11 cursor-pointer" @click="sendPage()">
+      <p class="text-center text-yellow-900">その他の商品も見る</p>
       <div>
         <span class="test-2"></span>
       </div>

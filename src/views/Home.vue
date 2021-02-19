@@ -26,6 +26,8 @@ import PurchaseFlow from '../components/PurchaseFlow.vue';
 import ProductContact from '../components/ProductContact.vue';
 import ShopInfo from '../components/ShopInfo.vue';
 import Footer from '../components/Footer.vue';
+// import VueGtag from "vue-gtag";
+
 export default {
   name: 'Home',
   components: {
@@ -40,11 +42,19 @@ export default {
     ShopInfo,
     Footer
   },
+  created() {
+    // this.$gtag.pageview({
+    //   page_path: '/',
+    //   page_title: "ホーム画面"
+    // })
+  },
   data() {
     return {
       firstTitle: "オシャレがあなたを輝かせる",
       secondTitle: "当店の商品ラインナップ"
     }
   },
+  methods: {
+  }
 }
 </script>
