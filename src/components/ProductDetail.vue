@@ -13,7 +13,7 @@
           <div v-for="(product, index) in products.image_url" :key="index"><img :src="product.image_url"></div>
       </slick>
       <slick ref="slick2" :options="slickNavOptions" class="slider-nav">
-        <div v-for="(product, index) in products.image_url" :key="index" class="mx-3 bg-gray-400"><img :src="product.image_url" class="opacity-60"></div>
+        <div v-for="(product, index) in products.image_url" :key="index" class="mx-3 bg-gray-400 opacity-60"><img :src="product.image_url"></div>
       </slick>
     </div>
     <div class="md:w-1/3">

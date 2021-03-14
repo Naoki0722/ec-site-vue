@@ -31,14 +31,16 @@ export default {
       email: "",
       tell: "",
       password: "",
+      user_id: "",
+      role: 10  //基本はユーザー登録のため
     }
   },
   methods: {
     createUserAccount() {
       firebase.auth().createUserWithEmailAndPassword(this.email,this.password)
       .then((response) => {
-        console.log(response);
-        alert("登録しました");
+        this.sendEmail(this.email);
+        this.user_id = response.user.uid;
         this.register();
       })
       .catch(error => {
@@ -52,16 +54,28 @@ export default {
               name: this.name,
               email: this.email,
               tell_number: this.tell,
-              password: this.password,
+              role: this.role,
+              user_id: this.user_id,
             })
-            .then((response) => {
-              console.log(response);
+            .then(() => {
+              alert('ログインページに移動します')
               this.$router.push("/login");
             })
             .catch((err) => {
               console.log('err:',err);
             })      
-    }
+    },
+    sendEmail() {
+      const actionCodeSettings = {
+        url: "https://" + location.host + "/login",
+      };
+      firebase.auth().languageCode = "ja";
+      const user = firebase.auth().currentUser;
+      user
+        .sendEmailVerification(actionCodeSettings)
+        .then(() => alert("認証メールを送りました!"))
+        .catch((e) => console.log(e));
+    },
   }
 }
 </script>

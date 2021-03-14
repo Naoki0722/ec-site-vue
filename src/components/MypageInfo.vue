@@ -3,10 +3,10 @@
     <div class="md:flex items-center mb-11">
       <p class="text-lg md:text-2xl ml-6 md:ml-0 mr-11 md:mr-6 mb-6 md:mb-0 text-yellow-900 tracking-wide">{{user.name}}<span class="mr-2 md:mr-6"> 様</span>ようこそ！</p>
       <div class="flex md:block">
-        <button class="block mx-auto md:inline md:mx-0 tracking-wider border hover:bg-orange rounded-full hover:text-white px-3 md:px-6 py-2 transition duration-300 ease-in-out bg-transparent text-gray-800 border-orange focus:outline-none" @click="edit" v-if="editFlag">
+        <button class="block mx-auto md:inline md:mx-0 tracking-wider border hover:bg-blue-400 rounded-full hover:text-white px-3 md:px-6 py-2 transition duration-300 ease-in-out bg-transparent text-gray-800 border-blue-400 focus:outline-none" @click="edit" v-if="editFlag">
           登録編集
         </button>
-        <button class="block mx-auto md:inline md:mx-0 tracking-wider border hover:bg-orange rounded-full hover:text-white px-3 md:px-6 py-2 transition duration-300 ease-in-out bg-transparent text-gray-800 border-orange focus:outline-none" @click="edit" v-else>
+        <button class="block mx-auto md:inline md:mx-0 tracking-wider border hover:bg-blue-400 rounded-full hover:text-white px-3 md:px-6 py-2 transition duration-300 ease-in-out bg-transparent text-gray-800 border-blue-400 focus:outline-none" @click="edit" v-else>
           編集完了
         </button>
         <button class="block mx-auto md:inline md:mx-11 tracking-wider border hover:bg-orange rounded-full hover:text-white px-3 md:px-6 py-2 transition duration-300 ease-in-out bg-transparent text-gray-800 border-orange focus:outline-none" @click="logout">
@@ -16,7 +16,7 @@
     </div>
     <table class="text-left text-yellow-900 mx-auto md:mx-0">
       <tr>
-        <th class="py-8 pr-28 md:pr-44">名前</th>
+        <th class="py-8 pr-14 md:pr-44">名前</th>
         <td v-if="editFlag">{{user.name}}</td>
         <td v-else><input type="text" class="border px-2 py-1" v-model="user.name"></td>
       </tr>
@@ -49,10 +49,6 @@ export default {
     user() {
       return this.$store.state.user
     }
-  },
-  created() {
-    console.log(this.user);
-
   },
   methods: {
     logout() {
