@@ -9,10 +9,15 @@
       <!-- <input type="checkbox" name="remember" id="remember" class="border rounded-md mb-11 mr-3">
       <label for="remember" class="tracking-wider text-yellow-900">remember me</label> -->
     </form>
-    <p class="text-orange text-center tracking-wide">forget your password?</p>
+    <button class="block m-auto text-orange tracking-wide border rounded-full px-3 py-2 border-orange hover:bg-orange hover:text-white transition duration-300 ease-in-out focus:outline-none" @click="$router.push('/reset')">forget your password?</button>
     <div class="mt-11 mb-11 text-center">  
-      <button class="tracking-widest border hover:bg-orange rounded-full hover:text-white px-6 py-3 transition duration-300 ease-in-out bg-transparent text-gray-600 border-orange" @click="userSignIn">
+      <button class="tracking-widest border hover:bg-orange rounded-full hover:text-white px-6 py-3 transition duration-300 ease-in-out bg-transparent text-gray-600 border-orange focus:outline-none" @click="firebaseSignIn">
         login
+      </button>
+    </div>
+    <div class="mt-11 mb-11 text-center">  
+      <button class="border hover:bg-orange rounded-full hover:text-white px-2 py-2 transition duration-300 ease-in-out bg-transparent text-gray-600 border-orange focus:outline-none" @click="$router.push('/admin/login')">
+        管理者の方はこちらから
       </button>
     </div>
     <!-- 今後の実装で考える予定 -->
@@ -43,22 +48,41 @@ export default {
     userSignIn() {
       this.$store.dispatch('login', {
         email: this.email,
-        password: this.password
       });
-      
-      this.firebaseSignIn();
     },
     firebaseSignIn() {
       firebase.auth().signInWithEmailAndPassword(this.email,this.password)
       .then((response) => {
         console.log(response);
-        this.$store.dispatch('onAuth');
-        this.$router.push('/mypage');
+        this.authUser()
       })
       .catch((error) => {
         alert('失敗しました');
         console.log(error);
       })
+    },
+    authUser() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user.emailVerified) {
+          this.userSignIn()
+          this.$store.dispatch('onAuth');
+          this.$router.push('/mypage');
+        } else {
+          alert('メール認証済んでいません、メールをご確認ください');
+          this.sendEmail()
+        }
+      });
+    },
+    sendEmail() {
+      const actionCodeSettings = {
+        url: "https://" + location.host + "/login",
+      };
+      firebase.auth().languageCode = "ja";
+      const user = firebase.auth().currentUser;
+      user
+        .sendEmailVerification(actionCodeSettings)
+        .then(() => alert("認証メールを送りました!"))
+        .catch((e) => console.log(e));
     },
     // googleLogin() {
     //   var provider = new firebase.auth.GoogleAuthProvider();

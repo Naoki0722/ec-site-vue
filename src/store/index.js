@@ -11,6 +11,7 @@ Vue.use(Vuex)
 export const initialState = {
   user: '',
   status: false,
+  token: '',
   carts: [],
   likes: []
 }
@@ -23,10 +24,14 @@ export default new Vuex.Store({
       state.user = payload;
     },
     userLogout(state, user) {
+      state.token = user;
       state.user = user;
     },
     onUserStatusChanged(state, status) {
       state.status = status;
+    },
+    getToken(state, token) {
+      state.token = token;
     },
     userEdit(state, { name, email, tell_number }) {
       state.user.name = name;
@@ -75,18 +80,33 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async login({ commit }, { email, password }) {
+    async login({ commit }, { email }) {
       const responseLogin = await axios.post(
         "https://gentle-wildwood-14193.herokuapp.com/api/login",
         {
           email: email,
-          password: password,
         }
       );
       const responseUser = await axios.get(
         `https://gentle-wildwood-14193.herokuapp.com/api/users/${responseLogin.data.data.id}`
       );
       commit("userLogin", responseUser.data.data);
+    },
+    async adminLogin({ commit }, { email, token }) {
+      const responseLogin = await axios.post(
+        "https://gentle-wildwood-14193.herokuapp.com/api/admin/login",
+        {
+          email: email,
+          token: token
+        }
+      );
+      const responseUser = await axios.get(
+        `https://gentle-wildwood-14193.herokuapp.com/api/users/${responseLogin.data.data.id}`
+      );
+      commit("userLogin", responseUser.data.data);
+    },
+    getToken({ commit }, { token }) {
+      commit("getToken", token)
     },
     logout({ commit }) {
       commit("userLogout", "");

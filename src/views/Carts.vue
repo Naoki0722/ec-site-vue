@@ -112,7 +112,7 @@ export default {
           axios
             .post('https://gentle-wildwood-14193.herokuapp.com/api/stripes', {
               title: "今回購入商品",
-              image: "https://storage.googleapis.com/ttrinity/_img/product/23/23218/1870578/design_img_f_1870578_s.png",
+              image: "https://image.brush-stock.com/img/vewospr001729.jpg",
               price: this.totalPrice,
               description: "ご確認の上決済を実行ください"
             })
