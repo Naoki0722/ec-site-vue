@@ -1,0 +1,41 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - if [ -e /tmp/node_modules.tar ]; then tar xf /tmp/node_modules.tar; fi
+      - echo update npm...
+      - npm install -g n
+      - n latest
+      - npm update -g npm
+      - echo node -v
+      - node -v
+      - echo npm -v
+      - npm -v
+      - echo install yarn...
+      - npm install -g yarn
+      - echo yarn -v
+      - yarn -v
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - yarn install
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the Node.js code
+      - yarn run build
+  post_build:
+    commands:
+      - tar cf /tmp/node_modules.tar node_modules
+      - echo Delete S3 Bucket object...
+      - aws s3 rm s3://${S3_BUCKET_NAME} --recursive
+      - echo create invalidation
+      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist
+cache:
+  paths:
+    - /tmp/node_modules.tar
