@@ -27,9 +27,9 @@ phases:
   post_build:
     commands:
       - tar cf /tmp/node_modules.tar node_modules
-      - echo Delete S3 Bucket object...
-      - aws s3 rm s3://${S3_BUCKET_NAME} --recursive
-      - echo create invalidation
+      # - echo Delete S3 Bucket object...
+      # - aws s3 rm s3://naoki-deploy-test --recursive
+      # - echo create invalidation
       # - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'
 artifacts:
   files:
